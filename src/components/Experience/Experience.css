@@ -1,0 +1,159 @@
+.experience__timeline {
+  position: relative;
+  margin-top: 48px;
+  padding-left: 40px;
+}
+
+.experience__line {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-1);
+  opacity: 0.3;
+}
+
+.experience__dot {
+  position: absolute;
+  left: -40px;
+  top: 32px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  z-index: 2;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.experience__card {
+  position: relative;
+}
+
+.experience__card-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.experience__card-content:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.experience__card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.experience__company-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.experience__role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.experience__company {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.experience__period {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 16px;
+  background: var(--bg-secondary);
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.experience__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  padding: 6px 14px;
+  background: rgba(0, 212, 170, 0.1);
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.experience__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.experience__list-item {
+  display: flex;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.experience__check {
+  min-width: 18px;
+  margin-top: 5px;
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .experience__timeline {
+    padding-left: 24px;
+  }
+
+  .experience__dot {
+    left: -24px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .experience__line {
+    left: 3px;
+  }
+
+  .experience__card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experience__period {
+    margin-left: 0;
+  }
+
+  .experience__card-content {
+    padding: 24px;
+  }
+}
