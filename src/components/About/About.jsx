@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../../hooks/useAnimations';
-import { FiUser, FiCalendar, FiBriefcase, FiMail, FiMapPin, FiBookOpen } from 'react-icons/fi';
+import { FiUser, FiBriefcase, FiMail, FiMapPin, FiBookOpen } from 'react-icons/fi';
 import companyLogo from '../../../image/company logo.jpg';
 import './About.css';
 
 const personalInfo = [
   { icon: <FiUser />, label: 'Name', value: 'Phyo Thu Rein Zaw' },
-  { icon: <FiCalendar />, label: 'Birth', value: '03 August 2001' },
   { icon: <FiBriefcase />, label: 'Experience', value: '1+ Year' },
   { icon: <FiMapPin />, label: 'Current Work', value: 'Fusion Solution Co., Ltd' },
   { icon: <FiMail />, label: 'Email', value: 'phyothureinzaw77@gmail.com' },

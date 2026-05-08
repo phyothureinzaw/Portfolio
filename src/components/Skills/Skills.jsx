@@ -1,69 +1,56 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../../hooks/useAnimations';
 import {
-  FiCode, FiDatabase, FiServer, FiTool, FiUsers, FiLayout,
-} from 'react-icons/fi';
+  SiReact,
+  SiVuedotjs,
+  SiVite,
+  SiTailwindcss,
+  SiShadcnui,
+  SiRedux,
+  SiReactquery,
+  SiDotnet,
+  SiPostman,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiHtml5,
+} from 'react-icons/si';
+import { DiVisualstudio } from 'react-icons/di';
+import { FaCss3Alt } from 'react-icons/fa';
+import { MdOutlineStorage } from 'react-icons/md';
+import { VscVscode } from 'react-icons/vsc';
 import './Skills.css';
 
-const skillCategories = [
-  {
-    title: 'Frontend',
-    icon: <FiLayout />,
-    color: '#6c63ff',
-    skills: [
-      { name: 'React.js', level: 90 },
-      { name: 'Vue.js', level: 85 },
-      { name: 'Vite', level: 85 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'shadcn/ui', level: 80 },
-    ],
-  },
-  {
-    title: 'State & Data',
-    icon: <FiCode />,
-    color: '#00d4aa',
-    skills: [
-      { name: 'Redux Toolkit', level: 88 },
-      { name: 'TanStack Query', level: 85 },
-    ],
-  },
-  {
-    title: 'Backend',
-    icon: <FiServer />,
-    color: '#f59e0b',
-    skills: [
-      { name: 'C# ASP.NET Core', level: 80 },
-      { name: 'REST APIs', level: 85 },
-    ],
-  },
-  {
-    title: 'Database',
-    icon: <FiDatabase />,
-    color: '#ef4444',
-    skills: [
-      { name: 'Microsoft SQL Server', level: 80 },
-    ],
-  },
-  {
-    title: 'Tools & Workflow',
-    icon: <FiTool />,
-    color: '#8b5cf6',
-    skills: [
-      { name: 'Git & GitHub', level: 85 },
-      { name: 'Postman', level: 80 },
-      { name: 'Visual Studio', level: 85 },
-      { name: 'VS Code', level: 90 },
-    ],
-  },
-  {
-    title: 'Soft Skills',
-    icon: <FiUsers />,
-    color: '#ec4899',
-    skills: [
-      { name: 'Problem-solving', level: 90 },
-      { name: 'Team Collaboration', level: 88 },
-    ],
-  },
+const row1 = [
+  { name: 'React', icon: SiReact, color: '#61dafb' },
+  { name: 'Vue.js', icon: SiVuedotjs, color: '#42b883' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#38bdf8' },
+  { name: 'Vite', icon: SiVite, color: '#a855f7' },
+  { name: 'HTML5', icon: SiHtml5, color: '#e34f26' },
+];
+
+const row2 = [
+  { name: 'Redux Toolkit', icon: SiRedux, color: '#764abc' },
+  { name: 'TanStack Query', icon: SiReactquery, color: '#ff4154' },
+  { name: 'ASP.NET Core', icon: SiDotnet, color: '#512bd4' },
+  { name: 'SQL Server', icon: MdOutlineStorage, color: '#cc2927' },
+  { name: 'shadcn/ui', icon: SiShadcnui, color: 'var(--text-primary)' },
+  { name: 'CSS3', icon: FaCss3Alt, color: '#1572b6' },
+];
+
+const row3 = [
+  { name: 'Git', icon: SiGit, color: '#f05032' },
+  { name: 'GitHub', icon: SiGithub, color: 'var(--text-primary)' },
+  { name: 'Postman', icon: SiPostman, color: '#ff6c37' },
+  { name: 'Visual Studio', icon: DiVisualstudio, color: '#5c2d91' },
+  { name: 'VS Code', icon: VscVscode, color: '#22a6f2' },
+];
+
+const marqueeRows = [
+  { skills: row1, direction: 'forward', speed: 'normal' },
+  { skills: row2, direction: 'reverse', speed: 'slow' },
+  { skills: row3, direction: 'forward', speed: 'fast' },
 ];
 
 function Skills() {
@@ -80,48 +67,50 @@ function Skills() {
           <span className="section-label">Skills</span>
           <h2 className="section-title">My Tech Stack</h2>
           <p className="section-subtitle">
-            Technologies and tools I use to bring ideas to life
+            Technologies and tools I use to design, build, and ship web products
           </p>
         </motion.div>
 
-        <div className="skills__grid">
-          {skillCategories.map((category, index) => (
+        <motion.div
+          className="skills__marquee-wrap"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {/* Floating orbs for depth */}
+          <div className="skills__orb skills__orb--1" />
+          <div className="skills__orb skills__orb--2" />
+          <div className="skills__orb skills__orb--3" />
+
+          {marqueeRows.map((row, rowIndex) => (
             <motion.div
-              key={category.title}
-              className="skills__card"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
+              key={row.direction + rowIndex}
+              className={`skills__marquee skills__marquee--${row.direction} skills__marquee--${row.speed}`}
+              initial={{ opacity: 0, x: row.direction === 'forward' ? -40 : 40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.2 + rowIndex * 0.15 }}
             >
-              <div
-                className="skills__card-icon"
-                style={{ background: `${category.color}20`, color: category.color }}
-              >
-                {category.icon}
-              </div>
-              <h3 className="skills__card-title">{category.title}</h3>
-              <div className="skills__list">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="skills__item">
-                    <div className="skills__item-header">
-                      <span className="skills__item-name">{skill.name}</span>
-                      <span className="skills__item-level">{skill.level}%</span>
+              <div className="skills__marquee-track">
+                {[...row.skills, ...row.skills, ...row.skills].map((skill, index) => {
+                  const Icon = skill.icon;
+
+                  return (
+                    <div
+                      className="skills__logo-card"
+                      key={`${rowIndex}-${skill.name}-${index}`}
+                      style={{ '--skill-color': skill.color }}
+                    >
+                      <span className="skills__logo-icon" aria-hidden="true">
+                        <Icon />
+                      </span>
+                      <span className="skills__logo-name">{skill.name}</span>
                     </div>
-                    <div className="skills__bar">
-                      <motion.div
-                        className="skills__bar-fill"
-                        style={{ background: category.color }}
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
