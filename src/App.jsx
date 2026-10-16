@@ -1,55 +1,39 @@
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Skills from './components/Skills/Skills';
-import Projects from './components/Projects/Projects';
-import Experience from './components/Experience/Experience';
-import Contact from './components/Contact/Contact';
-import Footer from './components/Footer/Footer';
-import ParticlesBg from './components/ParticlesBg/ParticlesBg';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { useEffect, useState } from 'react';
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import About from './components/About.jsx';
+import Skills from './components/Skills.jsx';
+import Experience from './components/Experience.jsx';
+import Projects from './components/Projects.jsx';
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx';
 
-function HomePage() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-    </>
-  );
-}
-
-function App() {
-  const theme = useSelector((state) => state.theme.mode);
+export default function App() {
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+    const timer = setTimeout(() => setLoaded(true), 1400);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="app">
-      <ParticlesBg />
+    <div className={`app ${loaded ? 'is-loaded' : ''}`}>
+      <div className="loader" aria-hidden="true">
+        <div className="loader__brand">
+          PTRZ<span>.</span>
+        </div>
+        <div className="loader__bar" />
+      </div>
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }
-
-export default App;
