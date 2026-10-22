@@ -95,24 +95,6 @@ export const projects = [
     ],
   },
   {
-    title: 'Expense Tracker',
-    subtitle: 'Personal Finance Management Web Application',
-    label: 'Personal Project',
-    description: [
-      'A full-stack personal finance application that helps users record, categorize, and analyze their expenses, with secure JWT authentication, category and expense management, monthly budgeting, recurring expense tracking, currency preferences, and interactive dashboard charts.',
-      'Users can filter and paginate expenses, compare monthly spending, monitor budget usage, and copy budgets from previous months.',
-    ],
-    stack: [
-      'React',
-      'Vite',
-      'ASP.NET Core Web API',
-      'Entity Framework Core',
-      'SQL Server',
-      'ASP.NET Core Identity',
-      'JWT',
-    ],
-  },
-  {
     title: 'Inventory Management System',
     subtitle: 'Inventory, Purchasing & Sales Platform',
     label: 'Personal Project',
